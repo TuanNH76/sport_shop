@@ -79,4 +79,13 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/product/search/{name}")
+    public Page<Product> findAllByName(@PathVariable("name")String name,
+                                       @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                       @RequestParam(value = "size", defaultValue = "3") Integer size){
+        PageRequest request = PageRequest.of(page - 1, size);
+        return productService.findAllByName(name,request);
+
+    }
+
 }

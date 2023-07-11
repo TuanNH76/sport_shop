@@ -27,7 +27,7 @@ public class ProductInOrder implements Serializable {
     private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oid")
+    @JoinColumn(name = "order_id")
     @JsonIgnore
     private OrderMain orderMain;
 
@@ -42,6 +42,9 @@ public class ProductInOrder implements Serializable {
 
     @NotNull
     private String productDescription;
+
+    @NotNull
+    private String productImage;
 
 
     @NotNull
@@ -63,7 +66,7 @@ public class ProductInOrder implements Serializable {
         this.productId = productInfo.getProductId();
         this.productName = productInfo.getProductName();
         this.productDescription = productInfo.getProductDescription();
-
+        this.productImage =productInfo.getProductImage();
         this.categoryType = productInfo.getCategoryType();
         this.productPrice = productInfo.getProductPrice();
         this.productStock = productInfo.getProductStock();
@@ -77,6 +80,7 @@ public class ProductInOrder implements Serializable {
                 ", productId='" + productId + '\'' +
                 ", productName='" + productName + '\'' +
                 ", productDescription='" + productDescription + '\'' +
+                ", productImage='" + productImage + '\'' +
                 ", categoryType=" + categoryType +
                 ", productPrice=" + productPrice +
                 ", productStock=" + productStock +
@@ -94,6 +98,7 @@ public class ProductInOrder implements Serializable {
                 Objects.equals(productId, that.productId) &&
                 Objects.equals(productName, that.productName) &&
                 Objects.equals(productDescription, that.productDescription) &&
+                Objects.equals(productImage,that.productImage) &&
                 Objects.equals(categoryType, that.categoryType) &&
                 Objects.equals(productPrice, that.productPrice);
     }
@@ -101,6 +106,6 @@ public class ProductInOrder implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), id, productId, productName, productDescription, categoryType, productPrice);
+        return Objects.hash(super.hashCode(), id, productId, productName, productDescription,productImage, categoryType, productPrice);
     }
 }

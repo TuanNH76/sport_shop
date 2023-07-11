@@ -15,6 +15,8 @@ public interface ProductService {
     Page<Product> findAll(Pageable pageable);
     // All products in a category
     Page<Product> findAllInCategory(Integer categoryType, Pageable pageable);
+    //Find by name
+    Page<Product> findAllByName(String name,Pageable pageable);
 
     // increase stock
     void increaseStock(Integer productId, int amount);

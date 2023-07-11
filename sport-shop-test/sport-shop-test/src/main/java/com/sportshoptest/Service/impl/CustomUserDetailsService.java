@@ -1,7 +1,8 @@
-package com.sportshoptest.Service;
+package com.sportshoptest.Service.impl;
 
 import com.sportshoptest.Entity.User;
 import com.sportshoptest.Repository.UserRepository;
+import com.sportshoptest.Service.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
