@@ -20,6 +20,13 @@ A Online Shop web application backend using Spring Boot.
 # Database Diagram
 ![image](https://github.com/juny76/sport_shop/assets/87554832/a9f09716-30d2-4913-9386-82f645df6d5a)
 
+# How to run this application
+- Download JDK 8 : https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html?fbclid=IwAR2GEi6QGuPH6Hrwg37T6PsS9fqfO5TBlnshQvKlfEd_DMus5Vvj_vE4uHY
+- Set up JAVA Environment : https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html
+- Download Intellij : https://www.jetbrains.com/idea/download/
+- Download MySQL 5.8 : https://downloads.mysql.com/archives/installer/
+- Download Node and npm : https://nodejs.org/en
+
 
 
 
