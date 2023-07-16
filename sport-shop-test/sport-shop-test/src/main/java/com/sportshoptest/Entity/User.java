@@ -3,6 +3,7 @@ package com.sportshoptest.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -33,15 +34,14 @@ public class User implements Serializable {
     private String phone;
     @NotEmpty
     private String address;
-    @NotNull
-    private boolean active;
+//    @NotNull
+    private boolean active = true;
     @NotEmpty
     private String role = "CUSTOMER";
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore  // fix bi-direction toString() recursion problem
     private Cart cart;
-
 
 
 

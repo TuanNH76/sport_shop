@@ -11,4 +11,6 @@ public interface UserService {
     Collection<User> findByRole(String role);
     User save(User user);
     User update(User user);
+
+    void delete(String email);
 }

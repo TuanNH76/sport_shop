@@ -19,7 +19,7 @@ public enum ResultEnum {
 
 
     VALID_ERROR(50, "Wrong information"),
-    USER_NOT_FOUNT(40,"User is not found!")
+    USER_NOT_FOUND(40,"User is not found!")
     ;
 
     private Integer code;

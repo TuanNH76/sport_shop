@@ -74,6 +74,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/seller/product/new").access("hasAnyAuthority('MANAGER')")
                 .antMatchers("/seller/**/delete").access("hasAnyAuthority( 'MANAGER')")
                 .antMatchers("/seller/**").access("hasAnyAuthority('EMPLOYEE', 'MANAGER')")
+//                .antMatchers("/seller/product/**/edit").access("hasAnyAuthority('EMPLOYEE', 'MANAGER')")
                 .anyRequest().permitAll()
 
                 .and()

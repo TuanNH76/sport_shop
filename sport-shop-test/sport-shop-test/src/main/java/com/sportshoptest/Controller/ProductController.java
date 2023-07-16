@@ -63,10 +63,11 @@ public class ProductController {
     public ResponseEntity edit(@PathVariable("id") String productId,
                                @Valid @RequestBody Product product,
                                BindingResult bindingResult) {
+        Integer id = Integer.parseInt(productId);
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(bindingResult);
         }
-        if (!productId.equals(product.getProductId())) {
+        if (!id.equals(product.getProductId())) {
             return ResponseEntity.badRequest().body("Id Not Matched");
         }
 

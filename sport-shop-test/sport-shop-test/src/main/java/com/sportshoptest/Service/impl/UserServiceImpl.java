@@ -65,4 +65,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(oldUser);
     }
 
+    @Override
+    public void delete(String email) {
+        User user = userRepository.findByEmail(email);
+        if(user != null) userRepository.delete(user);
+        else throw new MyException(ResultEnum.USER_NOT_FOUND);
+    }
+
 }
