@@ -1,6 +1,8 @@
 package com.sportshoptest.Service;
 
 import com.sportshoptest.Entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -12,5 +14,6 @@ public interface UserService {
     User save(User user);
     User update(User user);
 
+    Page<User> findByRole(String role, Pageable pageable);
     void delete(String email);
 }

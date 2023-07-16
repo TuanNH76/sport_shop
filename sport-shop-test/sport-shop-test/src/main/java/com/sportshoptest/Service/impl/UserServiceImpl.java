@@ -9,6 +9,8 @@ import com.sportshoptest.Repository.UserRepository;
 import com.sportshoptest.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,6 +65,11 @@ public class UserServiceImpl implements UserService {
         oldUser.setPhone(user.getPhone());
         oldUser.setAddress(user.getAddress());
         return userRepository.save(oldUser);
+    }
+
+    @Override
+    public Page<User> findByRole(String role, Pageable pageable) {
+        return userRepository.findAllByRole(role,pageable);
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.sportshoptest.Service.UserService;
 import com.sportshoptest.io.request.LoginForm;
 import com.sportshoptest.io.response.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -69,6 +71,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/seller/management/{role}")
+    public Page<User> getUserByRole(@PathVariable("role") String role,
+                                    @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                    @RequestParam(value = "size", defaultValue = "3") Integer size){
+        PageRequest request = PageRequest.of(page - 1, size);
+        return userService.findByRole(role,request);
+
+    }
     @GetMapping("/profile/{email}")
     public ResponseEntity<User> getProfile(@PathVariable("email") String email, Principal principal) {
         if (principal.getName().equals(email)) {
@@ -76,6 +86,13 @@ public class UserController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+
+    }
+
+    @DeleteMapping("seller/management/delete/{email}")
+    public ResponseEntity deleteUser(@PathVariable("email") String email){
+        userService.delete(email);
+        return ResponseEntity.ok().build();
 
     }
 }
