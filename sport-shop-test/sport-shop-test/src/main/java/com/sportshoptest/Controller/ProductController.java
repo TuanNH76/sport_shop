@@ -26,7 +26,7 @@ public class ProductController {
 
     @GetMapping("/product")
     public Page<Product> findAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                 @RequestParam(value = "size", defaultValue = "3") Integer size) {
+                                 @RequestParam(value = "size", defaultValue = "6") Integer size) {
         PageRequest request = PageRequest.of(page - 1, size);
         return productService.findAll(request);
     }

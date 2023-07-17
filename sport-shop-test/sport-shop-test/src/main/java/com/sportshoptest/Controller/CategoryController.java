@@ -31,7 +31,7 @@ public class CategoryController {
     @GetMapping("/category/{type}")
     public CategoryPage showOne(@PathVariable("type") Integer categoryType,
                                 @RequestParam(value = "page", defaultValue = "1") Integer page,
-                                @RequestParam(value = "size", defaultValue = "3") Integer size) {
+                                @RequestParam(value = "size", defaultValue = "6") Integer size) {
 
         Category cat = categoryService.findByCategoryType(categoryType);
         PageRequest request = PageRequest.of(page - 1, size);

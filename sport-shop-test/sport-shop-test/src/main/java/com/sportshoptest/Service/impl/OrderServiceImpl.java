@@ -3,13 +3,11 @@ package com.sportshoptest.Service.impl;
 import com.sportshoptest.Entity.OrderMain;
 import com.sportshoptest.Entity.Product;
 import com.sportshoptest.Entity.ProductInOrder;
+import com.sportshoptest.Entity.Revenue;
 import com.sportshoptest.Enums.OrderStatusEnum;
 import com.sportshoptest.Enums.ResultEnum;
 import com.sportshoptest.Exceptions.MyException;
-import com.sportshoptest.Repository.OrderRepository;
-import com.sportshoptest.Repository.ProductInOrderRepository;
-import com.sportshoptest.Repository.ProductRepository;
-import com.sportshoptest.Repository.UserRepository;
+import com.sportshoptest.Repository.*;
 import com.sportshoptest.Service.OrderService;
 import com.sportshoptest.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,8 @@ public class OrderServiceImpl implements OrderService {
     ProductService productService;
     @Autowired
     ProductInOrderRepository productInOrderRepository;
+    @Autowired
+    RevenueRepository revenueRepository;
 
     @Override
     public Page<OrderMain> findAll(Pageable pageable) {
@@ -95,4 +95,19 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findByOrderId(orderId);
 
     }
+
+    @Override
+    public Double getTotalAmount(Integer year, Integer month) {
+        Double amount= orderRepository.getTotalAmountByMonthAndYear(year,month);
+        Revenue revenueExist = revenueRepository.findByYearAndMonth(year,month);
+        if( revenueExist!= null) {
+           revenueExist.setAmount(amount);
+           revenueRepository.save(revenueExist);
+        }else {
+            Revenue revenue = new Revenue(year, month, amount);
+            revenueRepository.save(revenue);
+        }
+        return amount;
+    }
+
 }
