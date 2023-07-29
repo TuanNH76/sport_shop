@@ -2,7 +2,6 @@ package com.sportshoptest.Security;
 
 import com.sportshoptest.Security.JWT.JwtEntryPoint;
 import com.sportshoptest.Security.JWT.JwtFilter;
-import com.sportshoptest.Service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,8 +31,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    CustomUserDetailsService  userDetailsService;
-    @Autowired
     @Qualifier("dataSource")
     DataSource dataSource;
 
@@ -45,9 +42,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
+//        auth
+//                .userDetailsService(userDetailsService)
+//                .and()
         auth
-                .userDetailsService(userDetailsService)
-                .and()
                 .jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
