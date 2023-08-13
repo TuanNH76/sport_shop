@@ -16,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
@@ -34,6 +36,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Page<OrderMain> findAll(Pageable pageable) {
         return orderRepository.findAllByOrderByOrderStatusAscCreateTimeDesc(pageable);
+    }
+
+    @Override
+    public List<OrderMain> findAll() {
+        return orderRepository.findAllByOrderByOrderStatusAscCreateTimeDesc();
     }
 
     @Override

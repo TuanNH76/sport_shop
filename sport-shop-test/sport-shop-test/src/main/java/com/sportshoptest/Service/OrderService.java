@@ -5,9 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface OrderService {
     Page<OrderMain> findAll(Pageable pageable);
+    List<OrderMain> findAll();
 
     Page<OrderMain> findByStatus(Integer status, Pageable pageable);
 
