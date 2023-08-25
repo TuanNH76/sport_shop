@@ -36,11 +36,6 @@ public class ProductController {
 
         Product Product = productService.findOne(productId);
 
-//        // Product is not available
-//        if (Product.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
-//            Product = null;
-//        }
-
         return Product;
     }
 

@@ -79,8 +79,6 @@ public class ProductServiceImpl implements ProductService {
         if (Product.getProductStatus() == ProductStatusEnum.DOWN.getCode()) {
             throw new MyException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
-
-        //更新
         Product.setProductStatus(ProductStatusEnum.DOWN.getCode());
         return productRepository.save(Product);
     }
@@ -108,8 +106,6 @@ public class ProductServiceImpl implements ProductService {
         if(Product.getProductStatus() > 1) {
             throw new MyException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
-
-
         return productRepository.save(Product);
     }
 
