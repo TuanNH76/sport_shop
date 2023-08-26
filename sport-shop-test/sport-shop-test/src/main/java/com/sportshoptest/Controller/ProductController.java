@@ -39,6 +39,13 @@ public class ProductController {
         return Product;
     }
 
+    @GetMapping("product/best-seller")
+    public Page<Product> findByTopSale(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                       @RequestParam(value = "size", defaultValue = "6") Integer size){
+        PageRequest request = PageRequest.of(page-1,size);
+        return productService.findByTopSale(request);
+    }
+
     @PostMapping("/seller/product/new")
     public ResponseEntity create(@Valid @RequestBody Product product,
                                  BindingResult bindingResult) {
@@ -83,5 +90,7 @@ public class ProductController {
         return productService.findAllByName(name,request);
 
     }
+
+
 
 }

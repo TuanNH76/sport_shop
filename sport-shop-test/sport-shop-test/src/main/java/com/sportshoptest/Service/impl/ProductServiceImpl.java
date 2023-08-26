@@ -46,6 +46,12 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAllByName(String name, Pageable pageable){
         return productRepository.findByProductNameContainingIgnoreCase(name,pageable);
     }
+
+    @Override
+    public Page<Product> findByTopSale(Pageable pageable) {
+        return productRepository.findBySales(pageable);
+    }
+
     @Override
     @Transactional
     public void increaseStock(Integer productId, int amount) {
