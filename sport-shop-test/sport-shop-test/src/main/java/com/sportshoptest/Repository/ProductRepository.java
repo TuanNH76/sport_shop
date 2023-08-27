@@ -17,6 +17,8 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 
     Page<Product> findByProductNameContainingIgnoreCase(String name,Pageable pageable);
 
+    Page<Product> findAllByOrOrderByCreateTime(Pageable pageable);
+
     @Query(value = "select * from products p join product_in_order pio   on pio.product_id=p.product_id\n" +
             "group by p.product_id\n" +
             "order by sum(pio.count) desc\n", nativeQuery = true)
