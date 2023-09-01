@@ -14,7 +14,7 @@ import java.security.Principal;
 public class ReviewController {
     @Autowired
     ReviewService reviewService;
-    @GetMapping("/review/{productId}")
+    @GetMapping("/review/show/{productId}")
     public Page<Review> getReviewByProduct(@PathVariable("productId") String productId,
                                             @RequestParam(value = "page", defaultValue = "1") Integer page,
                                            @RequestParam(value = "size", defaultValue = "6") Integer size){
@@ -25,7 +25,8 @@ public class ReviewController {
     }
 
     @PostMapping("/review/post")
-    public Review postReview(@RequestBody Review review){
+    public Review postReview(@RequestBody Review review,Principal principal){
+        review.setUserEmail(principal.getName());
         return reviewService.postReview(review);
     }
 }
