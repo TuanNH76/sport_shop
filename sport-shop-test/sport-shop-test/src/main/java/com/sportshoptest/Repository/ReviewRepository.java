@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface ReviewRepository extends JpaRepository<Review,Integer> {
 
     Page<Review> findAllByProductIdOrderByCreateTimeDesc(Integer productId,Pageable pageable);
+    Review findByProductIdAndUserEmail(Integer productId, String userEmail);
 }
