@@ -18,7 +18,8 @@ A Online Shop web application backend using Spring Boot.
 - MySQL
 - Maven
 # Database Diagram
-![image](https://github.com/juny76/sport_shop/assets/87554832/a9f09716-30d2-4913-9386-82f645df6d5a)
+![image](https://github.com/juny76/sport_shop/assets/87554832/b9c1ea84-ccfd-4fa5-9145-f74e37a80bbc)
+
 
 # How to run this application
 - Download JDK 8 : https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html?fbclid=IwAR2GEi6QGuPH6Hrwg37T6PsS9fqfO5TBlnshQvKlfEd_DMus5Vvj_vE4uHY
