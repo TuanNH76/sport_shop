@@ -22,8 +22,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer review_id;
     @Max(5) @Min(0)
+    @NotNull
     private Integer rating;
     @Column(length = 255)
+    @NotNull
     private String comment;
     @NotNull
     private Integer productId;

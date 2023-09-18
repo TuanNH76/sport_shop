@@ -34,6 +34,11 @@ public class ReviewController {
         if(reviewRepository.findByProductIdAndUserEmail(review.getProductId(),review.getUserEmail()) != null){
                 return ResponseEntity.badRequest().build();
         };
+        if(review.getRating() == null) return ResponseEntity.badRequest().build();
+        if(review.getComment() == null){
+            String comt = "User wrote nothing";
+            review.setComment(comt);
+        }
         return ResponseEntity.ok(reviewService.postReview(review));
     }
 }
